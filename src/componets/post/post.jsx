@@ -36,18 +36,15 @@ function Post() {
     };
 
     return (
-        <div>
-            <h1 className='text-center'>Post</h1>
-            <div className="text-black mb-4 w-full bg-orange-200 p-4">
-                <h2>User name</h2>
-                <p>2 hours ago</p>
-            </div>
-            <img src={
-                IMG
-            } alt="" srcset="" />
-            
+        <div className="min-h-screen bg-gray-100 p-8">
+            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+                <h1 className='text-3xl font-bold text-center mb-6'>Post Your Review</h1>
+                {/* <div className="text-black mb-4 w-full bg-orange-100 p-4 rounded-lg shadow-md">
+                    <h2 className='text-xl font-semibold'>User name</h2>
+                    <p className='text-gray-600'>2 hours ago</p>
+                </div> */}
+                <img src={IMG} alt="Amazon" className="w-full h-auto rounded-lg mb-6 shadow-md" />
 
-            <div>
                 <Form 
                     username={postData.username} 
                     comment={postData.comment} 
@@ -55,17 +52,18 @@ function Post() {
                     handlePostData={handlePostData} 
                     handleSubmit={handleSubmit} 
                 />
-            </div>
-            <div>
-                {reviews.map((review, index) => (
-                    <div key={index} className="border p-2 mb-2">
-                        <p><strong>{review.username}</strong></p>
-                        <p>{review.comment}</p>
-                        <p>Rating: {review.review}</p>
-                    </div>
-                ))}
-            </div>
 
+                <div className="mt-8">
+                    <h2 className='text-2xl font-semibold mb-4'>Reviews:</h2>
+                    {reviews.map((review, index) => (
+                        <div key={index} className="border border-gray-300 p-4 mb-4 rounded-lg shadow-sm bg-white">
+                            <p className="text-lg font-bold">{review.username}</p>
+                            <p className="text-gray-700">{review.comment}</p>
+                            <p className="text-yellow-500">Rating: {review.review}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
